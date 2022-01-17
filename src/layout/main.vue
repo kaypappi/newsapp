@@ -8,7 +8,7 @@
       disableEsc
       :disableOutsideClick="!collasped"
       noOverlay
-      ><div><sidebar :onclick="handleNavigation"/></div>
+      ><sidebar :onclick="handleNavigation"/>
     </Push>
 
     <div id="page-wrap" :class="['right bg-indigo-50 px-4', { collapsed: collasped }]">
@@ -151,7 +151,6 @@ export default {
 .dashboard >>> .bm-item-list > * {
   display: flex;
   text-decoration: none;
-  padding: 0;
 }
 
 .dashboard >>> .bm-item-list > * > span {

@@ -1,12 +1,45 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import store from "../store";
 import Main from '@/layout/main'
 import head from "@/components/Navigation/header"
 import Dashboard from "@/views/Dashboard"
+import Login from "@/views/Auth/Login"
+import Register from "@/views/Auth/Register"
 
 Vue.use(VueRouter)
 
 const routes = [
+  {
+    path: '/login',
+    name: 'login',
+    component: Login,
+    beforeEnter: (to, from, next) => {
+      if (!store.getters["currentUser"]) {
+
+        next();
+      }
+      return next({
+        name: "home",
+      });
+     
+    },
+  },
+  {
+    path: '/register',
+    name: 'register',
+    component: Register,
+    beforeEnter: (to, from, next) => {
+      if (!store.getters["currentUser"]) {
+
+        next();
+      }
+      return next({
+        name: "home",
+      });
+     
+    },
+  },
   {
     path: '/',
     component: Main,
@@ -16,7 +49,17 @@ const routes = [
         name: 'home',
         component: Dashboard
       },
-    ]
+    ],
+    beforeEnter: (to, from, next) => {
+      if (store.getters["currentUser"]) {
+
+        next();
+      }
+      return next({
+        name: "login",
+      });
+     
+    },
   },
   {
     path: '/head',

@@ -3,10 +3,11 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faHome,faSearch,faSortAmountUpAlt,faUserCircle,faAngleRight} from '@fortawesome/free-solid-svg-icons'
+import { faHome,faSearch,faSortAmountUpAlt,faUserCircle,faAngleRight,faSignOutAlt} from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+import "./vee-validate";
 
-library.add(faHome,faSearch,faSortAmountUpAlt,faUserCircle  ,faAngleRight)
+library.add(faHome,faSearch,faSortAmountUpAlt,faUserCircle  ,faAngleRight,faSignOutAlt)
 
 
 
@@ -16,8 +17,11 @@ import './assets/tailwind.css'
 
 Vue.config.productionTip = false
 
-new Vue({
-  router,
-  store,
-  render: h => h(App)
-}).$mount('#app')
+store.dispatch('getCurrentUser').then(() => {
+  
+  new Vue({
+    router,
+    store,
+    render: h => h(App)
+  }).$mount('#app');
+});
