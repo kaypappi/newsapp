@@ -11,7 +11,7 @@
       px-8
     "
   >
-    <div class="w-96 px-4 py-12 bg-white rounded-lg">
+    <div class="w-96 px-4 py-12 bg-white rounded-sm">
       <validation-observer v-slot="{ invalid }">
         <form @submit.prevent="register" class="login__form">
           <div class="text-center text-2xl font-semibold text-gray-600 mb-4">
@@ -47,7 +47,7 @@
              bg-indigo-500
               text-indigo-100
               py-2
-              rounded-md
+              rounded-sm
               text-lg
               tracking-wide`,{'cursor-not-allowed':invalid}]"
             

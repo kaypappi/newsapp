@@ -1,16 +1,33 @@
 
 import Vue from 'vue'
 import Vuex from 'vuex'
+import News from "@/store/news"
 
 Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    currentUser: null
+    currentUser: null,
+    ToastArray: [],
   },
   mutations: {
     SET_CURRENT_USER(state, data) {
       state.currentUser = data
+    },
+    ADD_TO_TOAST(state, data) {
+      state.ToastArray.push(data)
+    },
+
+    SHOW_TOAST(state, { title, message, success }) {
+      state.toast = { show: true, title, message, success };
+      setTimeout(() => {
+        state.toast.show = false;
+      }, 2000);
+    },
+    REMOVE_ITEM_FROM_TOAST(state, index) {
+      const newToastArray = state.ToastArray
+      newToastArray.splice(index, 1)
+      state.ToastArray = newToastArray
     }
   },
   actions: {
@@ -25,9 +42,9 @@ export default new Vuex.Store({
 
     login({ commit }, data) {
       return new Promise((resolve, reject) => {
-        const user=JSON.parse(localStorage.getItem(data.userName))
-        console.log(user,data)
-        if(!user || user.password!=data.password){
+        const user = JSON.parse(localStorage.getItem(data.userName))
+        console.log(user, data)
+        if (!user || user.password != data.password) {
           return reject("Username or Password incorrect")
         }
         localStorage.setItem('currentUser', JSON.stringify(user))
@@ -36,8 +53,8 @@ export default new Vuex.Store({
       })
     },
 
-    logout({commit}){
-      return new Promise((resolve,reject)=>{
+    logout({ commit }) {
+      return new Promise((resolve, reject) => {
         localStorage.removeItem("currentUser")
         commit("SET_CURRENT_USER", null)
         return resolve(true)
@@ -54,6 +71,13 @@ export default new Vuex.Store({
         commit("SET_CURRENT_USER", user)
         return resolve(true)
       })
+    },
+    addToast({ commit }, data) {
+      commit("ADD_TO_TOAST", data);
+    },
+
+    removeToast({ commit }, index) {
+      commit("REMOVE_ITEM_FROM_TOAST", index);
     }
   },
   getters: {
@@ -62,5 +86,6 @@ export default new Vuex.Store({
     }
   },
   modules: {
+    News,
   }
 })

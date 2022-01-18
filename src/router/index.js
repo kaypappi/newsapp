@@ -6,6 +6,7 @@ import head from "@/components/Navigation/header"
 import Dashboard from "@/views/Dashboard"
 import Login from "@/views/Auth/Login"
 import Register from "@/views/Auth/Register"
+import Explore from "@/views/Explore"
 
 Vue.use(VueRouter)
 
@@ -17,7 +18,7 @@ const routes = [
     beforeEnter: (to, from, next) => {
       if (!store.getters["currentUser"]) {
 
-        next();
+      return  next();
       }
       return next({
         name: "home",
@@ -32,7 +33,7 @@ const routes = [
     beforeEnter: (to, from, next) => {
       if (!store.getters["currentUser"]) {
 
-        next();
+       return next();
       }
       return next({
         name: "home",
@@ -49,11 +50,16 @@ const routes = [
         name: 'home',
         component: Dashboard
       },
+      {
+        path: '/explore',
+        name: 'explore',
+        component: Explore
+      },
     ],
     beforeEnter: (to, from, next) => {
       if (store.getters["currentUser"]) {
 
-        next();
+       return next();
       }
       return next({
         name: "login",

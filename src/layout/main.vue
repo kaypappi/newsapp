@@ -8,13 +8,23 @@
       disableEsc
       :disableOutsideClick="!collasped"
       noOverlay
-      ><sidebar :onclick="handleNavigation"/>
+      ><sidebar :onclick="handleNavigation" />
     </Push>
 
-    <div id="page-wrap" :class="['right bg-indigo-50 px-4', { collapsed: collasped }]">
+    <div
+      id="page-wrap"
+      :class="['right bg-indigo-50 px-4', { collapsed: collasped }]"
+    >
       <Header :collasped="collasped" :toggleCollapsed="openMenu" />
-      <div class="dashboard__main position-relative h-100 ">
-       <router-view />
+      <div class="taost-wrapper z-10 sticky top-12 w-5/6  md:w-full max-w-sm right-0 ml-auto ">
+        <toast
+          v-for="(toast, index) in toastsArray"
+          :key="index"
+          :toast="{...toast,index}"
+        />
+      </div>
+      <div class="dashboard__main position-relative h-100">
+        <router-view />
       </div>
     </div>
   </div>
@@ -23,12 +33,14 @@
 <script>
 import { Push } from "vue-burger-menu";
 import Sidebar from "@/components/Navigation/sidebar.vue";
-import Header from "@/components/Navigation/header.vue"
+import Header from "@/components/Navigation/header.vue";
+import Toast from "../components/Toast.vue";
 export default {
   components: {
     Push,
     Sidebar,
-    Header
+    Header,
+    Toast,
   },
   data() {
     return {
@@ -60,6 +72,12 @@ export default {
       if (window.innerWidth < 1100) {
         this.collasped = true;
       }
+    },
+  },
+
+  computed: {
+    toastsArray() {
+      return this.$store.state.ToastArray;
     },
   },
 

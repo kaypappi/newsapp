@@ -1,14 +1,18 @@
 <template>
   <div>
-    <div class="w-full h-64 bg-white rounded-xl mb-4"></div>
-    <h3 class="text-lg font-bold">Test of a title cfhgjk nbhjv gfcxd ghjkn jbhjv gcfd fghjk ghjkn dxdfcghj</h3>
-    <h4 class="text-base text-warmGray-400">Author</h4>
-    <h5 class="text-sm text-warmGray-400">time</h5>
+    <img class="w-full h-64 bg-white rounded-sm mb-4" :src="item.urlToImage" alt="featured-img"/>
+    <h3 class="text-lg font-bold line-clamp-2">{{item.title}}</h3>
+    <h4 class="text-base text-warmGray-400">{{item.author}}</h4>
+    <h5 class="text-sm text-warmGray-400">{{item.publishedAt}}</h5>
   </div>
 </template>
 
 <script>
-export default {};
+export default {
+    props:{
+    item:Object
+}
+};
 </script>
 
 <style>
