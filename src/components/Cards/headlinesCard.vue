@@ -1,7 +1,7 @@
 <template>
   <div class="w-full headlines-card ">
     
-    <img class="h-full rounded-sm" :src="item.urlToImage" alt="headline-img">
+    <img class="h-full rounded-md" :src="item.urlToImage" alt="headline-img">
     <div class=" h-full ">
         <h3 class="text-lg font-bold line-clamp-1">{{item.title}}</h3>
         <h4 class="text-base text-warmGray-400">{{item.author}}</h4>

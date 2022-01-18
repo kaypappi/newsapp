@@ -11,7 +11,7 @@
       px-8
     "
   >
-    <div class="w-96 px-4 py-12 bg-white rounded-sm">
+    <div class="w-96 px-4 py-12 bg-white rounded-md">
       <validation-observer v-slot="{ invalid }">
         <form @submit.prevent="login" class="login__form">
           <div class="text-center text-2xl font-semibold text-gray-600 mb-4">
@@ -31,8 +31,9 @@
             type="password"
             label="Password"
           />
-          <div class="form__item text-right">
-            <a class="text-sm text-indigo-300" href>Forgot Password?</a>
+          <div class="form__item flex w-full items-center">
+              <router-link to="/register" class="text-sm text-indigo-300" >Register</router-link>
+            <a class="text-sm text-indigo-300 ml-auto" href>Forgot Password?</a>
           </div>
           <button
             :class="[`mt-4
@@ -40,7 +41,7 @@
              bg-indigo-500
               text-indigo-100
               py-2
-              rounded-sm
+              rounded-md
               text-lg
               tracking-wide`,{'cursor-not-allowed':invalid}]"
             

@@ -1,5 +1,5 @@
 <template>
-  <div class="dashboard">
+  <div class="dashboard relative">
     <Push
       :isOpen="!collasped"
       :crossIcon="!collasped && windows.width < 1100"
@@ -13,17 +13,17 @@
 
     <div
       id="page-wrap"
-      :class="['right bg-indigo-50 px-4', { collapsed: collasped }]"
+      :class="['right bg-indigo-50 px-4 h-100', { collapsed: collasped }]"
     >
       <Header :collasped="collasped" :toggleCollapsed="openMenu" />
-      <div class="taost-wrapper z-10 sticky top-12 w-5/6  md:w-full max-w-sm right-0 ml-auto ">
+      <div class="taost-wrapper z-10 absolute top-12 w-5/6  md:w-full max-w-sm right-0 ml-auto ">
         <toast
           v-for="(toast, index) in toastsArray"
           :key="index"
           :toast="{...toast,index}"
         />
       </div>
-      <div class="dashboard__main position-relative h-100">
+      <div class="dashboard__main position-relative h-full">
         <router-view />
       </div>
     </div>

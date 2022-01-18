@@ -1,7 +1,8 @@
 <template>
-  <div class="explore-wrapper">
-    explore
-    <vue-masonry-wall :items="items" :options="options" @append="getEverything">
+  <div class="explore-wrapper h-full">
+   <h2 class="text-lg font-bold mb-4">Explore</h2>
+    <loader class= " items-center mx-auto my-auto justify-center" v-if="!initialLoad"/>
+    <vue-masonry-wall v-else :items="items" :options="options" @append="getEverything">
       <template v-slot:default="{ item }">
         <full-news-card :item="item" />
       </template>
@@ -12,10 +13,12 @@
 <script>
 import VueMasonryWall from "vue-masonry-wall";
 import FullNewsCard from "../components/Cards/fullNewsCard.vue";
+import Loader from '../components/loader.vue';
 export default {
   components: {
     VueMasonryWall,
     FullNewsCard,
+    Loader,
   },
   data() {
     return {
@@ -26,6 +29,7 @@ export default {
       initial: 0,
       total: 0,
       loading: false,
+      initialLoad:false
     };
   },
   methods: {
@@ -43,9 +47,12 @@ export default {
       this.total = response.data.totalResults;
       this.items = [...this.items, ...response.data.articles];
       this.loading = false;
+      this.initialLoad=true
     },
   },
-  mounted() {},
+  mounted() {
+      this.getEverything()
+  },
 };
 </script>
 

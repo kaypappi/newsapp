@@ -73,22 +73,15 @@ export default {
   },
   computed:{
       sources(){
-          if(!this.$store.state.News.sources) {
-              return null
-          }
-          return this.$store.state.News.sources.slice(0,4)
+          return this.$store.state.News.sources
       },
       headlines(){
-          if(!this.$store.state.News.headlines) {
-              return null
-          }
-          return this.$store.state.News.headlines.slice(0,6)
+          
+          return this.$store.state.News.headlines
       },
       featured(){
-          if(!this.$store.state.News.headlines) {
-              return null
-          }
-          return this.$store.state.News.headlines.slice(0,3)
+          
+          return this.$store.state.News.headlines
       }
   },
   mounted(){

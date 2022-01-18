@@ -4,7 +4,7 @@
       <div class="dashboard__sidebar__list__top w-full">
         <template v-for="(menu, index) in menus">
           <router-link
-            class="dashboard__sidebar__list__item flex hover:bg-indigo-100 hover:text-indigo-400  rounded-sm px-4  mb-2 text-warmGray-400 w-full py-4 "
+            class="dashboard__sidebar__list__item flex hover:bg-indigo-100 hover:text-indigo-400  rounded-md px-4  mb-2 text-warmGray-400 w-full py-4 "
             :to="{name:menu.to}"
             :key="menu.name + index"
             :exact="menu.to === '/'"

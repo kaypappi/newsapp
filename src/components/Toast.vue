@@ -4,7 +4,7 @@
 
     <div
       :class="[
-        'flex items-center justify-between w-full p-2  rounded-sm shadow',
+        'flex items-center justify-between w-full p-2  rounded-md shadow',
         variantClass,
       ]"
     >
@@ -37,6 +37,11 @@ export default {
           this.checked=false
           this.$store.dispatch("removeToast",this.toast.index)
       }
+  },
+  mounted(){
+      setTimeout(()=>{
+          this.closeToast()
+      },5000)
   },
   computed: {
     variantClass() {

@@ -9,7 +9,7 @@
         h-12
         px-5
         pr-16
-        rounded-sm
+        rounded-md
         focus:outline-none
         w-full
         text-black text-base

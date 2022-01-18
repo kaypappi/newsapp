@@ -2,6 +2,8 @@ import news from "@/API/news"
 
 const state = () => ({
     sources: null,
+    headlines:null,
+    featured:null,
 })
 
 const mutations = {
@@ -33,7 +35,7 @@ const actions = {
 
         try {
             const response = await news.getSources()
-            commit("GET_SOURCES", response.data.sources)
+            commit("GET_SOURCES", response.data.sources.slice(0,4))
             return Promise.resolve(response)
         } catch (err) {
             return Promise.reject(err)
@@ -45,7 +47,7 @@ const actions = {
         try {
             const response = await news.getHeadlines(params)
 
-            commit("GET_HEADLINES", response.data.articles)
+            commit("GET_HEADLINES", response.data.articles.slice(0,6))
             return Promise.resolve(response)
         } catch (err) {
             return Promise.reject(err)
@@ -58,7 +60,7 @@ const actions = {
         try {
             const response = await news.getHeadlines(params)
            
-            commit("GET_FEATURED", response.data.articles)
+            commit("GET_FEATURED", response.data.articles.slice(0,3))
             return Promise.resolve(response)
         } catch (err) {
             return Promise.reject(err)
