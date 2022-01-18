@@ -43,7 +43,7 @@ export default new Vuex.Store({
     login({ commit }, data) {
       return new Promise((resolve, reject) => {
         const user = JSON.parse(localStorage.getItem(data.userName))
-        console.log(user, data)
+        
         if (!user || user.password != data.password) {
           return reject("Username or Password incorrect")
         }
@@ -67,7 +67,7 @@ export default new Vuex.Store({
           return resolve(true)
         }
         const user = JSON.parse(localStorage.getItem('currentUser'))
-        console.log(user)
+       
         commit("SET_CURRENT_USER", user)
         return resolve(true)
       })

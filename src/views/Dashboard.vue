@@ -44,6 +44,13 @@ export default {
     HeadlinesCard,
     FeaturedNewsCard,
   },
+  data(){
+      return{
+          gettingFeatured:false,
+          gettingSources:false,
+          gettingHeadlines:false,
+      }
+  },
   methods:{
     async  getSources(){
         this.gettingSources=true
@@ -55,13 +62,13 @@ export default {
         this.gettingHeadlines=true
         const response= await this.$store.dispatch("News/getHeadlines",{country:"us"})
         this.gettingHeadlines=false
-        console.log(response)
+       
     },
     async  getFeatured(){
         this.gettingFeatured=true
         const response= await this.$store.dispatch("News/getHeadlines",{country:"us",category:"entertainment"})
         this.gettingFeatured=false
-        console.log(response)
+       
     }
   },
   computed:{

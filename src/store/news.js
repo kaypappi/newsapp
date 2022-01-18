@@ -57,7 +57,7 @@ const actions = {
 
         try {
             const response = await news.getHeadlines(params)
-            console.log(response)
+           
             commit("GET_FEATURED", response.data.articles)
             return Promise.resolve(response)
         } catch (err) {
@@ -81,7 +81,7 @@ const actions = {
     async getEverything({ commit }, params = {}) {
         try {
             const response = await news.getEverything(params)
-            console.log(response)
+          
             commit("GET_FEATURED", response.data.articles)
             return Promise.resolve(response)
         } catch (err) {
