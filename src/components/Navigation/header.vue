@@ -1,5 +1,5 @@
 <template>
-  <div class="header-wrapper py-4">
+  <div class="header-wrapper py-4 bg-indigo-50">
       <div class="header-left"></div>
       <div class="header-right flex w-full md:w-1/3  ml-auto">
           <search class="flex-auto w-64"></search>

@@ -13,9 +13,9 @@
 
     <div
       id="page-wrap"
-      :class="['right bg-indigo-50 px-4 h-100', { collapsed: collasped }]"
+      :class="['right bg-indigo-50 h-100', { collapsed: collasped }]"
     >
-      <Header :collasped="collasped" :toggleCollapsed="openMenu" />
+      <Header :collasped="collasped" :toggleCollapsed="openMenu" class="sticky top-0 px-4" />
       <div class="taost-wrapper z-10 absolute top-12 w-5/6  md:w-full max-w-sm right-0 ml-auto ">
         <toast
           v-for="(toast, index) in toastsArray"
@@ -23,7 +23,7 @@
           :toast="{...toast,index}"
         />
       </div>
-      <div class="dashboard__main position-relative h-full">
+      <div class="dashboard__main position-relative h-full px-4">
         <router-view />
       </div>
     </div>
