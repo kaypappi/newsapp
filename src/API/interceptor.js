@@ -7,8 +7,8 @@ axios.interceptors.request.use((config) => {
     /* config.headers.post['Content-Type'] = "application/json"
     config.headers.post['AppVersion'] = '2.2.0|android' */
     config.headers.common[
-        "Authorization"
-    ] = `Bearer ${process.env.VUE_APP__APIKEY}`;
+        "X-Api-Key"
+    ] = process.env.VUE_APP__APIKEY;
     return config
 })
 
