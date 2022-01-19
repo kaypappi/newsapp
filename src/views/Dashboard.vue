@@ -7,7 +7,7 @@
       </h4>
     </div>
 
-    <div class="flex justify-between mt-4 mb-16">
+    <div class="flex justify-between mt-4 mb-16 overflow-auto">
       <template v-if="gettingSources"
         ><source-cards-skeleton class="mr-4" /><source-cards-skeleton
           class="mr-4" /><source-cards-skeleton
@@ -111,7 +111,7 @@ export default {
       return this.$store.state.News.headlines;
     },
     featured() {
-        console.log(this.$store.state.News.featured)
+        
       return this.$store.state.News.featured;
     },
   },

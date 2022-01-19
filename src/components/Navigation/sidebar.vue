@@ -8,6 +8,7 @@
             :to="{name:menu.to}"
             :key="menu.name + index"
             :exact="menu.to === '/'"
+            @click.native="onclick"
           >
             <div class="dashboard__sidebar__list__item__icon  ">
               <font-awesome-icon class="" :icon="menu.icon" />
@@ -32,6 +33,12 @@
 
 <script>
 export default {
+    props: {
+    onclick: {
+      type: Function,
+      default: () => {},
+    },
+  },
   data() {
     return {
       menus: [
