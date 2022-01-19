@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full headlines-card ">
+  <div class="w-full headlines-card animate-pulse ">
     
     <div class="h-full bg-coolGray-300 rounded-md" ></div>
     <div class=" h-full ">

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="animate-pulse">
     <div class="w-full h-64 bg-coolGray-300 rounded-md mb-4" ></div>
     <h3 class="text-lg bg-coolGray-300 w-full h-4 mb-4 font-bold line-clamp-2"></h3>
     <h4 class="text-base bg-coolGray-300 w-3/4 h-4 mb-4 text-warmGray-400"></h4>
