@@ -67,18 +67,6 @@ const actions = {
         }
 
     },
-    async getFeatured({ commit }, params) {
-
-        try {
-            const response = await news.getHeadlines(params)
-            
-            commit("GET_FEATURED", response.data.articles)
-            return Promise.resolve(response)
-        } catch (err) {
-            return Promise.reject(err)
-        }
-
-    },
 
     async getEverything({ commit }, params = {}) {
         try {

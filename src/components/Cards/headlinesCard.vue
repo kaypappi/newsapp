@@ -4,7 +4,7 @@
     <img class="h-full rounded-md" :src="item.urlToImage" alt="headline-img">
     <div class=" h-full ">
         <h3 class="text-lg font-bold line-clamp-1">{{item.title}}</h3>
-        <h4 class="text-base text-warmGray-400">{{item.author}}</h4>
+        <h4 class="text-base text-warmGray-400 line-clamp-1">{{item.author}}</h4>
         <h5 class="text-sm text-warmGray-400">{{item.publishedAt}}</h5>
     </div>
   </div>
